@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.baumann.andrew</groupId>
+	<artifactId>BdArchivePlanner</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>BdArchivePlanner</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.junit.version>4.12</junit.junit.version>
+		<org.pitest.version>1.1.5</org.pitest.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>${org.pitest.version}</version>
+				<configuration>
+					<targetClasses>
+						<param>org.baumann.andrew.archive.planner.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>org.baumann.andrew.archive.planner.*</param>
+					</targetTests>
+					<coverageThreshold>100</coverageThreshold>
+					<verbose>true</verbose>
+					<failWhenNoMutations>false</failWhenNoMutations>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+</project>
