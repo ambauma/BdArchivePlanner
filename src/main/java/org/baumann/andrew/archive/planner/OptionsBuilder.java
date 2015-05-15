@@ -42,7 +42,6 @@ final class OptionsBuilder {
     }
 
     OptionsBuilder handleCommands() {
-        Collections.reverse(optionHandlers);
         for (OptionHandler optionHandler : optionHandlers) {
             optionHandler.handle(commandLine);
         }

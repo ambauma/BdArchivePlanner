@@ -15,15 +15,17 @@ public final class Main {
 	    try {
 	        Model model = new Model();
     	    OptionsBuilder optionsBuilder = new OptionsBuilder();
-            optionsBuilder.add("s", "size", true, "Sets the disc size")
+            optionsBuilder.add("h", "help", false, "List commands for this application")
+                    .add("i", "include", true, "Folders to include, comma separated, and wrapped in quotes")
+                    .add(new FileListOptionHandler(model, FileEnum.INCLUDE))
+                    .add("e", "exclude", true, "Folders to exclude, comma separated, and wrapped in quotes")
+                    .add(new FileListOptionHandler(model, FileEnum.EXCLUDE))
+                    .add(new HelpOptionHandler(optionsBuilder)).add("s", "size", true, "Sets the disc size")
                     .add(new SizeOfDiscsOptionHandler(model))
                     .add("n", "number", true, "Sets the number of discs available")
                     .add(new NumberOfDiscsOptionHandler(model))
-                    .add("h", "help", false, "List commands for this application")
-                    .add(new HelpOptionHandler(optionsBuilder))
-                    .add("i", "include", true, "Folders to include")
                     .add("o", "output", true, "File name with path for output")
-                    .add("e", "exclude", true, "Folders to exclude");
+                    .add(new FileOutputOptionHandler(model));
     	    
     	    optionsBuilder.parse(args).handleCommands().doOutput();
 	    } catch (NormalExitException nee) {
