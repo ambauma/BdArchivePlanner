@@ -115,7 +115,7 @@ public final class MainTest {
     public void testSetDiscSizeBadUnit() {
         Main.main(new String[]{"-s","24es"});
         assertEquals("", out.getLog());
-        assertEquals("Unsupported unit of \"es\".  Supported units:  GB" + System.lineSeparator(), err.getLog());
+        assertEquals("Unsupported unit of \"es\".  Supported units:  GB, MB, KB" + System.lineSeparator(), err.getLog());
     }
     
 	@Test
@@ -126,10 +126,54 @@ public final class MainTest {
 	}
 	
 	@Test
+    public void testSetDiscSizeMB() {
+        Main.main(new String[]{"-s","25MB"});
+        assertEquals("Processing complete." + System.lineSeparator(), out.getLog());
+        assertEquals("", err.getLog());
+    }
+	
+	@Test
+    public void testSetDiscSizeKB() {
+        Main.main(new String[]{"-s","25KB"});
+        assertEquals("Processing complete." + System.lineSeparator(), out.getLog());
+        assertEquals("", err.getLog());
+    }
+	
+	@Test
+    public void testSetDiscSizeByte() {
+        Main.main(new String[]{"-s","25by"});
+        assertEquals("Processing complete." + System.lineSeparator(), out.getLog());
+        assertEquals("", err.getLog());
+    }
+	
+	@Test
     public void testSetDiscSizeLongOption() {
         Main.main(new String[]{"--size","25GB"});
         assertEquals("Processing complete." + System.lineSeparator(), out.getLog());
         assertEquals("", err.getLog());
     }
 
+	@Test
+    public void testSetNumberShortOption() {
+        Main.main(new String[]{"-n","5"});
+        assertEquals("Defaulting disc size to 25GB." + System.lineSeparator()
+                + "Processing complete." + System.lineSeparator(), out.getLog());
+        assertEquals("", err.getLog());
+    }
+	
+	@Test
+    public void testSetNumberLongOption() {
+        Main.main(new String[]{"--number","5"});
+        assertEquals("Defaulting disc size to 25GB." + System.lineSeparator()
+                + "Processing complete." + System.lineSeparator(), out.getLog());
+        assertEquals("", err.getLog());
+    }
+	
+	@Test
+    public void testSetNumberNotANumber() {
+        Main.main(new String[]{"--number","five"});
+        assertEquals("", out.getLog());
+        assertEquals("Improper number of \"five\" given.  Acceptable example: --number 5 "
+                + System.lineSeparator(), err.getLog());
+    }
 }

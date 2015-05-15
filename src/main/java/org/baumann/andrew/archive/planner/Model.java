@@ -5,17 +5,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
-    private int discSize;
+    private long discSize;
     private int discNumber;
     private List<File> includedFiles = new ArrayList<File>();
     private List<File> excludedFiles = new ArrayList<File>();
     
-    public final int getDiscSize() {
+    /**
+     * 
+     * @return  size in bits
+     */
+    public final long getDiscSize() {
         return discSize;
     }
-    public final void setDiscSize(int discSize) {
+    
+    /**
+     * 
+     * @param discSize  size in bits to set
+     */
+    public final void setDiscSize(long discSize) {
         this.discSize = discSize;
     }
+    
     public final int getDiscNumber() {
         return discNumber;
     }

@@ -16,6 +16,7 @@ public final class Main {
 	        Model model = new Model();
     	    OptionsBuilder optionsBuilder = new OptionsBuilder();
             optionsBuilder.add("s", "size", true, "Sets the disc size")
+                    .add(new SizeOfDiscsOptionHandler(model))
                     .add("n", "number", true, "Sets the number of discs available")
                     .add(new NumberOfDiscsOptionHandler(model))
                     .add("h", "help", false, "List commands for this application")

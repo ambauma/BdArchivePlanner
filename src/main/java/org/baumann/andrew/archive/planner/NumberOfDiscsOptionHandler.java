@@ -2,6 +2,7 @@ package org.baumann.andrew.archive.planner;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 
 class NumberOfDiscsOptionHandler implements OptionHandler {
 
@@ -13,27 +14,14 @@ class NumberOfDiscsOptionHandler implements OptionHandler {
     }
 
     public void handle(CommandLine commandLine) {
-        if(commandLine.hasOption("size")) {
-            String value = StringUtils.strip(commandLine.getOptionValue("size"));
-            if(value.length() < 3) {
-                throw new AbnormalExitException("Improper size of \"" + value + "\" given.  Acceptable example: --size 25GB ");
+        if(commandLine.hasOption("number")) {
+            String value = StringUtils.strip(commandLine.getOptionValue("number"));
+            if(StringUtils.isEmpty(value) || !NumberUtils.isDigits(value)) {
+                throw new AbnormalExitException("Improper number of \"" + value + "\" given.  Acceptable example: --number 5 ");
             } else {
-                String size = value.substring(0, value.length() - 2);
-                String unit = value.substring(value.length() - 2, value.length());
-                if(!StringUtils.isNumeric(size)) {
-                    throw new AbnormalExitException("Improper size of \"" + value + "\" given.  Acceptable example: --size 25GB ");
-                }
-                if("GB".equalsIgnoreCase(unit)) {
-                    model.setDiscSize(Integer.parseInt(size));
-                } else {
-                    throw new AbnormalExitException("Unsupported unit of \"" + unit + "\".  Supported units:  GB");
-                }
+                model.setDiscNumber(Integer.parseInt(value));
             }
-            
-        } else {
-            System.out.println("Defaulting disc size to 25GB.");
         }
-
     }
 
 }

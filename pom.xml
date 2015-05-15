@@ -56,7 +56,7 @@
 					<targetTests>
 						<param>org.baumann.andrew.archive.planner.*</param>
 					</targetTests>
-					<coverageThreshold>75</coverageThreshold>
+					<coverageThreshold>91</coverageThreshold>
 					<verbose>true</verbose>
 					<failWhenNoMutations>false</failWhenNoMutations>
 					<timestampedReports>false</timestampedReports>

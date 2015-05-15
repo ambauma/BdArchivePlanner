@@ -57,25 +57,4 @@ final class OptionsBuilder {
         return options;
     }
 
-    void setOptions(Options options) {
-        this.options = options;
-    }
-
-    List<OptionHandler> getOptionHandlers() {
-        return optionHandlers;
-    }
-
-    void setOptionHandlers(List<OptionHandler> optionHandlers) {
-        this.optionHandlers = optionHandlers;
-    }
-
-    CommandLine getCommandLine() {
-        return commandLine;
-    }
-
-    void setCommandLine(CommandLine commandLine) {
-        this.commandLine = commandLine;
-    }
-    
-    
 }
