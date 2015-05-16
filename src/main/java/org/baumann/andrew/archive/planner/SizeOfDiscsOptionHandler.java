@@ -39,7 +39,6 @@ class SizeOfDiscsOptionHandler implements OptionHandler {
                     throw new AbnormalExitException("Unsupported unit of \"" + unit + "\".  Supported units:  GB, MB, KB");
                 }
             }
-            
         } else {
             System.out.println("Defaulting disc size to 25GB.");
             model.setDiscSize(GBtoBytes * 25);
