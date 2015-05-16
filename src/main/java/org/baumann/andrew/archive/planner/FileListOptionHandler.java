@@ -12,6 +12,7 @@ class FileListOptionHandler implements OptionHandler {
 
     private final Model model;
     private final FileEnum includeOrExclude;
+    private final SystemFilenameFilter ignoreHiddenFiles = new SystemFilenameFilter();
     
     FileListOptionHandler(Model model, FileEnum includeOrExclude) {
         this.model = model;
@@ -49,7 +50,7 @@ class FileListOptionHandler implements OptionHandler {
 
     private void handleDirectory(File file) {
         System.out.print("Found folder '" + file.getAbsolutePath() + "'");
-        if(file.listFiles().length == 0){
+		if(file.listFiles(ignoreHiddenFiles).length == 0){
             System.out.print(System.lineSeparator());
         } else {
             System.out.print(", recursing...");

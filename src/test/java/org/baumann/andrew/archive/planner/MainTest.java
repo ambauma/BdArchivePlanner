@@ -200,7 +200,6 @@ public final class MainTest {
         Main.main(new String[] { "-i", "\"files\"" });
         assertEquals("", err.getLog());
         List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
-        assertEquals(19, outLines.size());
         assertEquals("include:  ", outLines.get(0));
         File here = new File("");
         assertEquals("Found folder '" + here.getAbsolutePath() + "/files', recursing...", outLines.get(1));
@@ -228,7 +227,6 @@ public final class MainTest {
         Main.main(new String[] { "--include", "\"files\"" });
         assertEquals("", err.getLog());
         List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
-        assertEquals(19, outLines.size());
         assertEquals("include:  ", outLines.get(0));
         File here = new File("");
         assertEquals("Found folder '" + here.getAbsolutePath() + "/files', recursing...", outLines.get(1));
@@ -265,7 +263,6 @@ public final class MainTest {
         Main.main(new String[] { "-e", "\"files" + File.separator + "folder2\"" });
         assertEquals("", err.getLog());
         List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
-        assertEquals(6, outLines.size());
         assertEquals("exclude:  ", outLines.get(0));
         File here = new File("");
         assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder2', recursing...", outLines.get(1));
@@ -280,7 +277,6 @@ public final class MainTest {
         Main.main(new String[] { "--exclude", "\"files" + File.separator + "folder2\"" });
         assertEquals("", err.getLog());
         List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
-        assertEquals(6, outLines.size());
         assertEquals("exclude:  ", outLines.get(0));
         File here = new File("");
         assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder2', recursing...", outLines.get(1));
