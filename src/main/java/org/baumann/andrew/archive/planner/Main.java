@@ -22,8 +22,6 @@ public final class Main {
                     .add(new FileListOptionHandler(model, FileEnum.EXCLUDE))
                     .add(new HelpOptionHandler(optionsBuilder)).add("s", "size", true, "Sets the disc size")
                     .add(new SizeOfDiscsOptionHandler(model))
-                    .add("n", "number", true, "Sets the number of discs available")
-                    .add(new NumberOfDiscsOptionHandler(model))
                     .add("o", "output", true, "File name with path for output")
                     .add(new FileOutputOptionHandler(model));
     	    

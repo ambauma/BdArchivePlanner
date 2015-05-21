@@ -55,7 +55,6 @@ public final class MainTest {
                 + " -h,--help            List commands for this application" + System.lineSeparator() 
                 + " -i,--include <arg>   Folders to include, comma separated, and wrapped in" + System.lineSeparator() 
                     + "                      quotes" + System.lineSeparator()
-                + " -n,--number <arg>    Sets the number of discs available" + System.lineSeparator()
                 + " -o,--output <arg>    File name with path for output"  + System.lineSeparator() 
                 + " -s,--size <arg>      Sets the disc size" + System.lineSeparator(),
                 out.getLog());
@@ -71,7 +70,6 @@ public final class MainTest {
                 + " -h,--help            List commands for this application" + System.lineSeparator() 
                 + " -i,--include <arg>   Folders to include, comma separated, and wrapped in" + System.lineSeparator() 
                     + "                      quotes" + System.lineSeparator()
-                + " -n,--number <arg>    Sets the number of discs available" + System.lineSeparator()
                 + " -o,--output <arg>    File name with path for output"  + System.lineSeparator() 
                 + " -s,--size <arg>      Sets the disc size" + System.lineSeparator(),
                 out.getLog());
@@ -168,32 +166,6 @@ public final class MainTest {
         assertEquals("Defaulting output to 'output.txt'" + System.lineSeparator()
                 + "Processing complete." + System.lineSeparator(), out.getLog());
         assertEquals("", err.getLog());
-    }
-
-	@Test
-    public void testSetNumberShortOption() throws Exception {
-        Main.main(new String[]{"-n","5"});
-        assertEquals("Defaulting disc size to 25GB." + System.lineSeparator()
-                + "Defaulting output to 'output.txt'" + System.lineSeparator() 
-                + "Processing complete." + System.lineSeparator(), out.getLog());
-        assertEquals("", err.getLog());
-    }
-	
-	@Test
-    public void testSetNumberLongOption() throws Exception {
-        Main.main(new String[]{"--number","5"});
-        assertEquals("Defaulting disc size to 25GB." + System.lineSeparator()
-                + "Defaulting output to 'output.txt'" + System.lineSeparator() 
-                + "Processing complete." + System.lineSeparator(), out.getLog());
-        assertEquals("", err.getLog());
-    }
-	
-	@Test
-    public void testSetNumberNotANumber() throws Exception {
-        Main.main(new String[]{"--number","five"});
-        assertEquals("Defaulting disc size to 25GB." + System.lineSeparator(), out.getLog());
-        assertEquals("Improper number of \"five\" given.  Acceptable example: --number 5 "
-                + System.lineSeparator(), err.getLog());
     }
 	
     @Test

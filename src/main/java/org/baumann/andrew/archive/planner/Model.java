@@ -10,7 +10,6 @@ public class Model implements Serializable {
     private static final long serialVersionUID = 7143323132392155894L;
     private String outputFile = "output.txt";
     private long discSize;
-    private int discNumber;
     private List<File> includedFiles = new ArrayList<File>();
     private List<File> excludedFiles = new ArrayList<File>();
     
@@ -38,12 +37,6 @@ public class Model implements Serializable {
         this.discSize = discSize;
     }
     
-    public final int getDiscNumber() {
-        return discNumber;
-    }
-    public final void setDiscNumber(int discNumber) {
-        this.discNumber = discNumber;
-    }
     public final List<File> getIncludedFiles() {
         return includedFiles;
     }
