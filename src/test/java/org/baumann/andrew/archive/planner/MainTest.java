@@ -338,4 +338,49 @@ public final class MainTest {
 
         
     }
+    
+    @Test
+    public void testMultipleDiscsWithExcludes() throws Exception {
+        Main.main(new String[] { "--include", "\"files\"", "--exclude", "\"files/folder2\"", "--size", "24KB", "--output", "out.txt" });
+        assertEquals("", err.getLog());
+        List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
+        assertEquals("include:  ", outLines.get(0));
+        File here = new File("");
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files', recursing...", outLines.get(1));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder1', recursing...", outLines.get(2));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder1/folder1-1', recursing...", outLines.get(3));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-1.txt', size: 12506 bytes", outLines.get(4));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt', size: 11760 bytes", outLines.get(5));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt', size: 5901 bytes", outLines.get(6));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt', size: 6936 bytes", outLines.get(7));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder1/folder1-2', recursing...", outLines.get(8));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt', size: 4390 bytes", outLines.get(9));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt', size: 2703 bytes", outLines.get(10));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt', size: 7813 bytes", outLines.get(11));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt', size: 6844 bytes", outLines.get(12));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder2', recursing...", outLines.get(13));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder2/file2-1.txt', size: 487040 bytes", outLines.get(14));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder3'", outLines.get(15));
+        assertEquals("exclude:  ", outLines.get(16));
+        assertEquals("Found folder '" + here.getAbsolutePath() + "/files/folder2', recursing...", outLines.get(17));
+        assertEquals("Found file '" + here.getAbsolutePath() + "/files/folder2/file2-1.txt', size: 487040 bytes", outLines.get(18));
+        assertEquals("Processing complete.", outLines.get(19));
+        Path path = Paths.get("out.txt");
+        List<String> outputLines = new ArrayList<String>();
+        try(Stream<String> lines = Files.lines(path)) {
+        	lines.forEach(s -> outputLines.add(s));
+        }
+        assertEquals("Disc 1:", outputLines.get(0));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-1.txt", outputLines.get(1));
+        assertEquals("Disc 2:", outputLines.get(2));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(3));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(4));
+        assertEquals("Disc 3:", outputLines.get(5));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(6));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(7));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(8));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(9));
+        assertEquals("Disc 4:", outputLines.get(10));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(11));
+    }
 }

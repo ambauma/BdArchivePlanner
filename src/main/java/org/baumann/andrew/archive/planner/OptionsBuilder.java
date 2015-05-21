@@ -1,5 +1,6 @@
 package org.baumann.andrew.archive.planner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +49,15 @@ final class OptionsBuilder {
     }
     
     void doOutput(final Model model) throws Exception {
+    	List<File> finalIncluded = new ArrayList<File>();
+    	for(File excluded : model.getExcludedFiles()) {
+    		for( File included : model.getIncludedFiles()) {
+    			if(!included.getAbsolutePath().startsWith(excluded.getAbsolutePath())) {
+    				finalIncluded.add(included);
+    			}
+    		}
+    		model.setIncludedFiles(finalIncluded);
+    	}
         new OutputWriter(model);
     }
 
