@@ -13,19 +13,7 @@ public final class Main {
 	
 	public static void main(String[] args) throws Exception {
 	    try {
-	        Model model = new Model();
-    	    OptionsBuilder optionsBuilder = new OptionsBuilder();
-            optionsBuilder.add("h", "help", false, "List commands for this application")
-                    .add("i", "include", true, "Folders to include, comma separated, and wrapped in quotes")
-                    .add(new FileListOptionHandler(model, FileEnum.INCLUDE))
-                    .add("e", "exclude", true, "Folders to exclude, comma separated, and wrapped in quotes")
-                    .add(new FileListOptionHandler(model, FileEnum.EXCLUDE))
-                    .add(new HelpOptionHandler(optionsBuilder)).add("s", "size", true, "Sets the disc size")
-                    .add(new SizeOfDiscsOptionHandler(model))
-                    .add("o", "output", true, "File name with path for output")
-                    .add(new FileOutputOptionHandler(model));
-    	    
-    	    optionsBuilder.parse(args).handleCommands().doOutput(model);
+    	    new ArchivePlannerService().execute(args);
 	    } catch (NormalExitException nee) {
 	        //Do Nothing
 	    } catch (AbnormalExitException aee) {

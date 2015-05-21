@@ -2,19 +2,20 @@ package org.baumann.andrew.archive.planner;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
 
 class HelpOptionHandler implements OptionHandler {
 
-    final OptionsBuilder optionsBuilder;
+    final Options options;
     
-    HelpOptionHandler(OptionsBuilder optionsBuilder) {
-        this.optionsBuilder = optionsBuilder;
+    HelpOptionHandler(Options options) {
+        this.options = options;
     }
     
     public void handle(CommandLine commandLine) {
         if(commandLine.hasOption("help")) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp( "BdArchivePlanner", optionsBuilder.getOptions());
+            formatter.printHelp( "BdArchivePlanner", options);
             throw new NormalExitException();
         }
     }
