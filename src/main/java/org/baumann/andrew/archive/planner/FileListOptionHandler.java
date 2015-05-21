@@ -31,14 +31,17 @@ class FileListOptionHandler implements OptionHandler {
                 } else {
                     throw new AbnormalExitException("Folder '" + foldername + "' does not exist.");
                 }
-                if(FileEnum.INCLUDE.equals(includeOrExclude)) {
-                    model.getIncludedFiles().add(file);
-                } else {
-                    model.getExcludedFiles().add(file);
-                }
             }
         }
     }
+
+	private void addFileToModel(File file) {
+		if(FileEnum.INCLUDE.equals(includeOrExclude)) {
+		    model.getIncludedFiles().add(file);
+		} else {
+		    model.getExcludedFiles().add(file);
+		}
+	}
 
     private void handleFiles(File file) {
         if (file.isDirectory()) {
@@ -65,6 +68,7 @@ class FileListOptionHandler implements OptionHandler {
 
     private void handleFile(File file) {
         System.out.println("Found file '" + file.getAbsolutePath() + "', size: " + file.length() + " bytes");
+        addFileToModel(file);
     }
 
     private List<String> findFolderNames(CommandLine commandLine, String includeOrExcludeString) {

@@ -27,7 +27,7 @@ public final class Main {
                     .add("o", "output", true, "File name with path for output")
                     .add(new FileOutputOptionHandler(model));
     	    
-    	    optionsBuilder.parse(args).handleCommands().doOutput();
+    	    optionsBuilder.parse(args).handleCommands().doOutput(model);
 	    } catch (NormalExitException nee) {
 	        //Do Nothing
 	    } catch (AbnormalExitException aee) {

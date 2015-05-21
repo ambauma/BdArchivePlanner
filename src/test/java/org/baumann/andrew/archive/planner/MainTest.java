@@ -5,8 +5,13 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.baumann.andrew.archive.planner.Main;
@@ -223,7 +228,7 @@ public final class MainTest {
     }
     
     @Test
-    public void testSetIncludeFilesLongOption() {
+    public void testSetIncludeFilesLongOption() throws Exception {
         Main.main(new String[] { "--include", "\"files\"" });
         assertEquals("", err.getLog());
         List<String> outLines = Arrays.asList(StringUtils.split(out.getLog(), System.lineSeparator()));
@@ -247,7 +252,23 @@ public final class MainTest {
         assertEquals("Defaulting disc size to 25GB.", outLines.get(16));
         assertEquals("Defaulting output to 'output.txt'", outLines.get(17));
         assertEquals("Processing complete.", outLines.get(18));
-        System.out.println(here.getAbsolutePath());
+        Path path = Paths.get("output.txt");
+        List<String> outputLines = new ArrayList<String>();
+        try(Stream<String> lines = Files.lines(path)) {
+        	lines.forEach(s -> outputLines.add(s));
+        }
+        assertEquals("Disc 1:", outputLines.get(0));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-1.txt", outputLines.get(1));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(2));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(3));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(4));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(5));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(6));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(7));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(8));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder2/file2-1.txt", outputLines.get(9));
+
+        
     }
     
     @Test
@@ -302,4 +323,5 @@ public final class MainTest {
         assertEquals("Defaulting disc size to 25GB." + System.lineSeparator()
                 + "Processing complete." + System.lineSeparator(), out.getLog());
     }
+    
 }

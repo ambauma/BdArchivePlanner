@@ -48,8 +48,8 @@ final class OptionsBuilder {
         return this;
     }
     
-    void doOutput() {
-        System.out.println("Processing complete.");
+    void doOutput(final Model model) {
+        new OutputWriter(model);
     }
 
     Options getOptions() {
