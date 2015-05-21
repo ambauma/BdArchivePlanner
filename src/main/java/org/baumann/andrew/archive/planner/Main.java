@@ -11,7 +11,7 @@ package org.baumann.andrew.archive.planner;
  */
 public final class Main {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 	    try {
 	        Model model = new Model();
     	    OptionsBuilder optionsBuilder = new OptionsBuilder();

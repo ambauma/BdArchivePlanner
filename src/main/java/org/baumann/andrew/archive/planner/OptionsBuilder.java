@@ -1,7 +1,6 @@
 package org.baumann.andrew.archive.planner;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
@@ -48,7 +47,7 @@ final class OptionsBuilder {
         return this;
     }
     
-    void doOutput(final Model model) {
+    void doOutput(final Model model) throws Exception {
         new OutputWriter(model);
     }
 

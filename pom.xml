@@ -15,8 +15,8 @@
 		<junit.junit.version>4.12</junit.junit.version>
 		<org.pitest.version>1.1.5</org.pitest.version>
 		<system-rules.version>1.9.0</system-rules.version>
-		<min.line.coverage>96</min.line.coverage>
-		<min.mutation.coverage>80</min.mutation.coverage>
+		<min.line.coverage>97</min.line.coverage>
+		<min.mutation.coverage>85</min.mutation.coverage>
 	</properties>
 
 	<dependencies>
