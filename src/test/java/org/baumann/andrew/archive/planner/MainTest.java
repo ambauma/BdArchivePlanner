@@ -323,19 +323,20 @@ public final class MainTest {
         }
         assertEquals("Disc 1:", outputLines.get(0));
         assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-1.txt", outputLines.get(1));
-        assertEquals("Disc 2:", outputLines.get(2));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(3));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(4));
-        assertEquals("Disc 3:", outputLines.get(5));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(6));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(7));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(8));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(9));
-        assertEquals("Disc 4:", outputLines.get(10));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(11));
-        assertEquals("Too large for disc:", outputLines.get(12));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder2/file2-1.txt", outputLines.get(13));
-
+        assertEquals("11494B remaining of 24000B,  47%", outputLines.get(2));
+        assertEquals("Disc 2:", outputLines.get(3));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(4));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(5));
+        assertEquals("6339B remaining of 24000B,  26%", outputLines.get(6));
+        assertEquals("Disc 3:", outputLines.get(7));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(8));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(9));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(10));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(11));
+        assertEquals("2158B remaining of 24000B,  8%", outputLines.get(12));
+        assertEquals("Disc 4:", outputLines.get(13));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(14));
+        assertEquals("17156B remaining of 24000B,  71%", outputLines.get(15));
         
     }
     
@@ -372,15 +373,19 @@ public final class MainTest {
         }
         assertEquals("Disc 1:", outputLines.get(0));
         assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-1.txt", outputLines.get(1));
-        assertEquals("Disc 2:", outputLines.get(2));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(3));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(4));
-        assertEquals("Disc 3:", outputLines.get(5));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(6));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(7));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(8));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(9));
-        assertEquals("Disc 4:", outputLines.get(10));
-        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(11));
+        assertEquals("11494B remaining of 24000B,  47%", outputLines.get(2));
+        assertEquals("Disc 2:", outputLines.get(3));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-2.txt", outputLines.get(4));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-3.txt", outputLines.get(5));
+        assertEquals("6339B remaining of 24000B,  26%", outputLines.get(6));
+        assertEquals("Disc 3:", outputLines.get(7));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-1/file1-1-4.txt", outputLines.get(8));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-1.txt", outputLines.get(9));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-2.txt", outputLines.get(10));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-3.txt", outputLines.get(11));
+        assertEquals("2158B remaining of 24000B,  8%", outputLines.get(12));
+        assertEquals("Disc 4:", outputLines.get(13));
+        assertEquals("" + here.getAbsolutePath() + "/files/folder1/folder1-2/file1-2-4.txt", outputLines.get(14));
+        assertEquals("17156B remaining of 24000B,  71%", outputLines.get(15));
     }
 }

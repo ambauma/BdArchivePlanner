@@ -2,6 +2,9 @@ package org.baumann.andrew.archive.planner;
 
 import java.io.File;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 public class OutputWriter {
 
@@ -21,11 +24,15 @@ public class OutputWriter {
 					bytes += fileSize;
 					printWriter.println(file.getAbsolutePath());
 				} else if((fileSize + bytes) >= model.getDiscSize()){
+					printAmountLeft(model, bytes, printWriter);
 					disc++;
 					bytes = fileSize;
 					printWriter.println("Disc " + disc + ":");
 					printWriter.println(file.getAbsolutePath());
 				}
+			}
+			if(bytes > 0L) {
+				printAmountLeft(model, bytes, printWriter);
 			}
 			if(hasFilesTooLarge) {
 				printWriter.println("Too large for disc:");
@@ -36,10 +43,19 @@ public class OutputWriter {
 					}
 				}
 			}
+			
 		} finally {
 			printWriter.close();
 		}
 		System.out.println("Processing complete.");
+	}
+
+	private void printAmountLeft(Model model, long bytes,
+			PrintWriter printWriter) {
+		long top = model.getDiscSize() - bytes;
+		double fraction = top / (double) model.getDiscSize();
+		printWriter.println(model.getDiscSize() - bytes + "B remaining of " + model.getDiscSize() + "B,  " 
+			+ new BigDecimal(fraction * 100).setScale(0, RoundingMode.DOWN) + "%");
 	}
 
 }

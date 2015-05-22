@@ -16,7 +16,7 @@
 		<org.pitest.version>1.1.5</org.pitest.version>
 		<system-rules.version>1.9.0</system-rules.version>
 		<min.line.coverage>97</min.line.coverage>
-		<min.mutation.coverage>86</min.mutation.coverage>
+		<min.mutation.coverage>84</min.mutation.coverage>
 	</properties>
 
 	<dependencies>
